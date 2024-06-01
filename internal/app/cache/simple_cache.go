@@ -1,5 +1,9 @@
 package cache
 
+import "time"
+
+var Timeout = time.Millisecond * 100
+
 type SimpleCache struct {
 	items map[string]string
 }
@@ -21,6 +25,7 @@ func (c *SimpleCache) Get(key string) (string, error) {
 }
 
 func (c *SimpleCache) Set(key string, value string) error {
+	time.Sleep(Timeout)
 	c.items[key] = value
 
 	return nil

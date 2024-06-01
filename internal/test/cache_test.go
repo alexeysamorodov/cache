@@ -16,10 +16,10 @@ func TestSetGet(t *testing.T) {
 		name  string
 		cache cache.Cache
 	}{
-		// {
-		// 	name:  "SimpleCache SetGet",
-		// 	cache: cache.NewSimpleCache(),
-		// },
+		{
+			name:  "SimpleCache SetGet",
+			cache: cache.NewSimpleCache(),
+		},
 		{
 			name:  "ConcurrentCache SetGet",
 			cache: cache.NewConcurrentCache(),
@@ -48,10 +48,10 @@ func TestDelete(t *testing.T) {
 		name  string
 		cache cache.Cache
 	}{
-		// {
-		// 	name:  "SimpleCache Delete",
-		// 	cache: cache.NewSimpleCache(),
-		// },
+		{
+			name:  "SimpleCache Delete",
+			cache: cache.NewSimpleCache(),
+		},
 		{
 			name:  "ConcurrentCache Delete",
 			cache: cache.NewConcurrentCache(),
@@ -84,15 +84,10 @@ func TestParallel(t *testing.T) {
 		cache          cache.Cache
 		parallelFactor int
 	}{
-		// {
-		// 	name:           "SimpleCache Parallel factor = 100",
-		// 	cache:          cache.NewSimpleCache(),
-		// 	parallelFactor: 1000,
-		// },
 		{
-			name:           "ConcurrentCache Parallel factor = 100",
+			name:           "ConcurrentCache test race",
 			cache:          cache.NewConcurrentCache(),
-			parallelFactor: 100000,
+			parallelFactor: 100_000,
 		},
 	}
 
