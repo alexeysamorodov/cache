@@ -11,8 +11,8 @@ type CacheWithContext struct {
 
 var ErrorTimeout = errors.New("Timeout")
 
-func NewCacheWithContext() CacheWithContext {
-	return CacheWithContext{
+func NewCacheWithContext() *CacheWithContext {
+	return &CacheWithContext{
 		cache: NewSimpleCache(),
 	}
 }

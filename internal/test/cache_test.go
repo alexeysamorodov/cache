@@ -24,6 +24,10 @@ func TestSetGet(t *testing.T) {
 			name:  "ConcurrentCache SetGet",
 			cache: cache.NewConcurrentCache(),
 		},
+		{
+			name:  "ShardedCache SetGet",
+			cache: cache.NewShardedCache(),
+		},
 	}
 
 	for _, tt := range tests {
@@ -56,6 +60,10 @@ func TestDelete(t *testing.T) {
 			name:  "ConcurrentCache Delete",
 			cache: cache.NewConcurrentCache(),
 		},
+		{
+			name:  "ShardedCache SetGet",
+			cache: cache.NewShardedCache(),
+		},
 	}
 
 	for _, tt := range tests {
@@ -87,6 +95,11 @@ func TestParallel(t *testing.T) {
 		{
 			name:           "ConcurrentCache test race",
 			cache:          cache.NewConcurrentCache(),
+			parallelFactor: 100_000,
+		},
+		{
+			name:           "ShardedCache test race",
+			cache:          cache.NewShardedCache(),
 			parallelFactor: 100_000,
 		},
 	}

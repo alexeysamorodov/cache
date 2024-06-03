@@ -30,6 +30,6 @@ func TestCacheWithContext_SetWithBigTimeout(t *testing.T) {
 
 	err := cache.Set(ctx, "k", "v")
 	if err != nil {
-		t.Errorf("Expected error, %v", err)
+		t.Errorf("Not expected error, %v", err)
 	}
 }
