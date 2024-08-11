@@ -10,4 +10,4 @@ type Cache interface {
 	Delete(key string) error
 }
 
-var ErrorNotFound = errors.New("Item was not found")
+var ErrorNotFound = errors.New("item was not found")

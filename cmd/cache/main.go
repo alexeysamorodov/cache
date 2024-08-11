@@ -2,34 +2,26 @@ package main
 
 import (
 	"fmt"
+	"strconv"
+	"sync"
 
 	cache "github.com/alexeysamorodov/cache/internal/app/cache"
 )
 
 func main() {
 	cacheImpl := cache.NewSimpleCache()
-
-	fmt.Println("Set several values to the cache")
-	cacheImpl.Set("Russia", "Moscow")
-	cacheImpl.Set("England", "London")
-	fmt.Println()
-
-	fmt.Println("Read existing value from the cache")
-	key := "Russia"
-	item, _ := cacheImpl.Get(key)
-	fmt.Printf("Read data: Key:%s, Value:%s\n", key, item)
-	key = "England"
-	item, _ = cacheImpl.Get(key)
-	fmt.Printf("Read data: Key:%s, Value:%s\n", key, item)
-	fmt.Println()
-
-	fmt.Println("Delete data from the cache")
-	cacheImpl.Delete("Russia")
-	fmt.Println()
-
-	fmt.Println("Read not existing value from the cache")
-	item, err := cacheImpl.Get("Russia")
-	if err != nil {
-		fmt.Println(err)
+	wg := sync.WaitGroup{}
+	for i := 0; i < 100; i++ {
+		wg.Add(1)
+		go func(i int) {
+			defer func() {
+				recover()
+			}()
+			defer wg.Done()
+			str := strconv.Itoa(i)
+			cacheImpl.Set(str, str)
+		}(i)
 	}
+	wg.Wait()
+	fmt.Println("here")
 }

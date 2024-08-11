@@ -12,7 +12,7 @@ type ShardedCache struct {
 	shardCount int
 }
 
-func NewShardedCache() Cache {
+func NewShardedCache() *ShardedCache {
 	shardCount := runtime.NumCPU()
 
 	shards := make([]map[string]string, shardCount)

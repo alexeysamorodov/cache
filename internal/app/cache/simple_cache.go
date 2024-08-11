@@ -8,7 +8,7 @@ type SimpleCache struct {
 	items map[string]string
 }
 
-func NewSimpleCache() Cache {
+func NewSimpleCache() *SimpleCache {
 	return &SimpleCache{
 		items: make(map[string]string),
 	}

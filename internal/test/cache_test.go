@@ -92,6 +92,11 @@ func TestParallel(t *testing.T) {
 		cache          cache.Cache
 		parallelFactor int
 	}{
+		// {
+		// 	name:           "SimpleCache test race",
+		// 	cache:          cache.NewSimpleCache(),
+		// 	parallelFactor: 10,
+		// },
 		{
 			name:           "ConcurrentCache test race",
 			cache:          cache.NewConcurrentCache(),

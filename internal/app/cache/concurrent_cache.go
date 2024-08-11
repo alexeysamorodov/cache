@@ -7,7 +7,7 @@ type ConcurrentCache struct {
 	mutex sync.RWMutex
 }
 
-func NewConcurrentCache() Cache {
+func NewConcurrentCache() *ConcurrentCache {
 	return &ConcurrentCache{
 		items: make(map[string]string),
 	}
